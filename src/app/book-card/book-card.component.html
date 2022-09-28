@@ -1,4 +1,4 @@
-<div *ngIf="content">
+<div *ngIf="content; else loadingSpinner">
   <h3>{{ content.title }}</h3>
   <h4>{{ content.author }}</h4>
   <a href="#" (click)="handleClick($event)">Details</a>
@@ -6,3 +6,7 @@
     {{ content.abstract }}
   </p>
 </div>
+
+<ng-template #loadingSpinner>
+  <span>Loading...</span>
+</ng-template>

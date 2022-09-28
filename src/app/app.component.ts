@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { books } from '../data/books';
 import { Book } from './book';
 
 @Component({
@@ -7,11 +8,7 @@ import { Book } from './book';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  book: Book = {
-    title: 'Super Angular Buch',
-    author: 'Max Mustermann',
-    abstract: 'Lorem ipsum',
-  };
+  books = books;
 
   navigateToDetails(book: Book): void {
     console.table(book);

@@ -2,4 +2,5 @@
 <app-book-card
   [content]="book"
   (detailsClicked)="navigateToDetails($event)"
+  *ngFor="let book of books"
 ></app-book-card>
