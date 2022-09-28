@@ -1,4 +1,4 @@
-import { Book } from '../app/book';
+import { Book } from '../book';
 
 export const books: Book[] = [
   {

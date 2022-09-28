@@ -1,11 +1,2 @@
 <h1>Hello Workshop</h1>
-<input
-  type="text"
-  placeholder="Title filter"
-  (input)="titleFilterChanged($event)"
-/>
-<app-book-card
-  [content]="book"
-  (detailsClicked)="navigateToDetails($event)"
-  *ngFor="let book of books | booksFilter: titleFilter"
-></app-book-card>
+<app-book></app-book>
