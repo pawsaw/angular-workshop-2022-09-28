@@ -10,6 +10,12 @@ import { Book } from './book';
 export class AppComponent {
   books = books;
 
+  titleFilter = '';
+
+  titleFilterChanged(inputEvent: Event): void {
+    this.titleFilter = (inputEvent.target as HTMLInputElement).value;
+  }
+
   navigateToDetails(book: Book): void {
     console.table(book);
   }
