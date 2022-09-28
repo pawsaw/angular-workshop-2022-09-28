@@ -1,4 +1,11 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Book, emptyBook } from '../book';
 
 @Component({
@@ -8,6 +15,7 @@ import { Book, emptyBook } from '../book';
 })
 export class BookCardComponent implements OnInit {
   @Input() content: Book | null = null;
+  @Output() detailsClicked = new EventEmitter<Book>();
 
   constructor() {}
 
@@ -15,6 +23,8 @@ export class BookCardComponent implements OnInit {
 
   handleClick(event: MouseEvent): void {
     event.preventDefault();
-    console.log('Clicked', event);
+    if (this.content) {
+      this.detailsClicked.emit(this.content);
+    }
   }
 }

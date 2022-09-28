@@ -1,2 +1,5 @@
 <h1>Hello Workshop</h1>
-<app-book-card [content]="book"></app-book-card>
+<app-book-card
+  [content]="book"
+  (detailsClicked)="navigateToDetails($event)"
+></app-book-card>

@@ -12,4 +12,8 @@ export class AppComponent {
     author: 'Max Mustermann',
     abstract: 'Lorem ipsum',
   };
+
+  navigateToDetails(book: Book): void {
+    console.table(book);
+  }
 }
