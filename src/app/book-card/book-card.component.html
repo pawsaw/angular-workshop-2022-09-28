@@ -1,0 +1,8 @@
+<div *ngIf="content">
+  <h3>{{ content.title }}</h3>
+  <h4>{{ content.author }}</h4>
+  <a href="#" (click)="handleClick($event)">Details</a>
+  <p>
+    {{ content.abstract }}
+  </p>
+</div>
