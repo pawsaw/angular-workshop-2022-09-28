@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from './book';
+import { BookApiService } from './book-api.service';
 import { books } from './data/books';
 
 @Component({
@@ -8,9 +9,9 @@ import { books } from './data/books';
   styleUrls: ['./book.component.scss'],
 })
 export class BookComponent implements OnInit {
-  constructor() {}
+  constructor(private readonly _books: BookApiService) {}
 
-  books = books;
+  books: Book[] | null = null;
 
   titleFilter = '';
 
@@ -22,5 +23,7 @@ export class BookComponent implements OnInit {
     console.table(book);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.books = this._books.getAll();
+  }
 }

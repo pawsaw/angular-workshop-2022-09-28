@@ -3,8 +3,10 @@
   placeholder="Title filter"
   (input)="titleFilterChanged($event)"
 />
-<app-book-card
-  [content]="book"
-  (detailsClicked)="navigateToDetails($event)"
-  *ngFor="let book of books | booksFilter: titleFilter"
-></app-book-card>
+<ng-container *ngIf="books">
+  <app-book-card
+    [content]="book"
+    (detailsClicked)="navigateToDetails($event)"
+    *ngFor="let book of books | booksFilter: titleFilter"
+  ></app-book-card>
+</ng-container>
