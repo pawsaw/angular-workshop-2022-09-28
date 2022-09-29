@@ -1,15 +1,10 @@
+import { Observable, of } from 'rxjs';
 import { Book } from './book';
 
 export class MockBookApiService {
   constructor() {}
 
-  getAll(): Book[] {
-    return [
-      {
-        title: 'My mock book',
-        abstract: 'My mock abstract',
-        author: 'Max Mock',
-      },
-    ];
+  getAll(): Observable<Book[]> {
+    return of([]);
   }
 }

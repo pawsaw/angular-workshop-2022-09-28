@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from './book';
 import { BookApiService } from './book-api.service';
-import { books } from './data/books';
 
 @Component({
   selector: 'app-book',
@@ -24,6 +23,10 @@ export class BookComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.books = this._books.getAll();
+    this._books.getAll().subscribe({
+      next: (books) => {
+        this.books = books;
+      },
+    });
   }
 }

@@ -1,12 +1,5 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewEncapsulation,
-} from '@angular/core';
-import { Book, emptyBook } from '../book';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Book } from '../book';
 
 @Component({
   selector: 'app-book-card',

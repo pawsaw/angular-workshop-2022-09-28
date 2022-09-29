@@ -6,23 +6,13 @@ import { BooksFilterPipe } from './books-filter/books-filter.pipe';
 import { BookApiService } from './book-api.service';
 import { MockBookApiService } from './mock-book-api.service';
 import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 const myMockBookApiService = new MockBookApiService();
 
 @NgModule({
   declarations: [BookComponent, BookCardComponent, BooksFilterPipe],
-  providers: [
-    {
-      provide: BookApiService,
-      useFactory: () => {
-        if (environment.production) {
-          return new BookApiService();
-        }
-
-        return myMockBookApiService;
-      },
-    },
-  ],
+  providers: [BookApiService],
   imports: [CommonModule],
   exports: [BookComponent],
 })

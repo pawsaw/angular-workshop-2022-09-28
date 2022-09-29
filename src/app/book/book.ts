@@ -1,11 +1,15 @@
-export interface Book {
-  title: string;
-  author: string;
-  abstract: string;
+export interface Publisher {
+  name: string;
+  url: string;
 }
 
-export const emptyBook: Book = {
-  title: '',
-  abstract: '',
-  author: '',
-};
+export interface Book {
+  title: string;
+  subtitle: string;
+  isbn: string;
+  abstract: string;
+  numPages: number;
+  author: string;
+  publisher: Publisher;
+  cover: string;
+}
