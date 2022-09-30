@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { Book } from './book';
 import { BookApiService } from './book-api.service';
 
@@ -9,11 +9,9 @@ import { BookApiService } from './book-api.service';
   styleUrls: ['./book.component.scss'],
 })
 export class BookComponent implements OnInit, OnDestroy {
-  private _sub = new Subscription();
-
   constructor(private readonly _books: BookApiService) {}
 
-  books: Book[] | null = null;
+  books$: Observable<Book[]> = of([]);
 
   titleFilter = '';
 
@@ -26,16 +24,8 @@ export class BookComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const sub = this._books.getAll().subscribe({
-      next: (books) => {
-        this.books = books;
-      },
-    });
-
-    this._sub.add(sub);
+    this.books$ = this._books.getAll();
   }
 
-  ngOnDestroy(): void {
-    this._sub.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 }

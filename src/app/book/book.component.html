@@ -3,10 +3,11 @@
   placeholder="Title filter"
   (input)="titleFilterChanged($event)"
 />
-<ng-container *ngIf="books">
+<ng-container *ngIf="books$ | async as books">
   <app-book-card
     [content]="book"
     (detailsClicked)="navigateToDetails($event)"
     *ngFor="let book of books | booksFilter: titleFilter"
   ></app-book-card>
+  <span>We have {{ books.length }} books in your collection</span>
 </ng-container>
