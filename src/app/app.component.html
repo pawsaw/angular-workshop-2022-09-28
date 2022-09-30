@@ -1,3 +1,6 @@
 <h1>Hello Workshop</h1>
-<!-- <app-msg [type]="type"> <span>Hello Workshop</span></app-msg> -->
-<app-book></app-book>
+
+<app-navigation
+  (navigationTriggered)="navigationTriggerd($event)"
+></app-navigation>
+<router-outlet></router-outlet>
