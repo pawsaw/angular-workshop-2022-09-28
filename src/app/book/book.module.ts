@@ -8,11 +8,12 @@ import { MockBookApiService } from './mock-book-api.service';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { BookRoutingModule } from './book-routing.module';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 
 const myMockBookApiService = new MockBookApiService();
 
 @NgModule({
-  declarations: [BookComponent, BookCardComponent, BooksFilterPipe],
+  declarations: [BookComponent, BookCardComponent, BooksFilterPipe, BookDetailComponent],
   providers: [BookApiService],
   imports: [CommonModule, BookRoutingModule],
   exports: [BookComponent],

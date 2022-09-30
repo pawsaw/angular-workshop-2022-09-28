@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of, Subscription } from 'rxjs';
 import { Book } from './book';
 import { BookApiService } from './book-api.service';
@@ -7,9 +13,13 @@ import { BookApiService } from './book-api.service';
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookComponent implements OnInit, OnDestroy {
-  constructor(private readonly _books: BookApiService) {}
+  constructor(
+    private readonly _books: BookApiService,
+    private _router: Router
+  ) {}
 
   books$: Observable<Book[]> = of([]);
 
@@ -20,7 +30,7 @@ export class BookComponent implements OnInit, OnDestroy {
   }
 
   navigateToDetails(book: Book): void {
-    console.table(book);
+    this._router.navigate(['/books/details', book.isbn]);
   }
 
   ngOnInit(): void {

@@ -10,4 +10,8 @@ export class BookApiService {
   getAll(): Observable<Book[]> {
     return this._http.get<Book[]>('http://localhost:4730/books');
   }
+
+  findOneByIsbn(isbn: string): Observable<Book> {
+    return this._http.get<Book>(`http://localhost:4730/books/${isbn}`);
+  }
 }

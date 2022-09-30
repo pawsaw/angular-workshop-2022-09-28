@@ -1,0 +1,7 @@
+<div *ngIf="book$ | async as book">
+  <h4>Book ({{ book.isbn }})</h4>
+  <h5>({{ book.title }})</h5>
+  <p>
+    {{ book.abstract }}
+  </p>
+</div>
