@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Observable, of, switchMap } from 'rxjs';
+import { catchError, map, Observable, of, retry, switchMap } from 'rxjs';
 import { Book } from '../book';
 import { BookApiService } from '../book-api.service';
 
@@ -20,7 +20,7 @@ export class BookDetailComponent implements OnInit {
     this.book$ = this._route.params.pipe(
       // map((params) => params['isbn']),
       map((params) => params['isbn']),
-      switchMap((isbn) => this._books.findOneByIsbn(isbn))
+      switchMap((isbn) => this._books.findOneByIsbn(isbn)),
     );
   }
 }
