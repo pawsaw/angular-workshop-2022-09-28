@@ -4,4 +4,5 @@
   <p>
     {{ book.abstract }}
   </p>
+  <a [routerLink]="['/books', 'edit', book.isbn]">edit</a>
 </div>

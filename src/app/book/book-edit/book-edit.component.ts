@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, map, Observable, of, retry, switchMap } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { Book } from '../book';
 import { BookApiService } from '../book-api.service';
 
 @Component({
-  selector: 'app-book-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.scss'],
+  selector: 'app-book-edit',
+  templateUrl: './book-edit.component.html',
+  styleUrls: ['./book-edit.component.scss'],
 })
-export class BookDetailComponent implements OnInit {
-  // isbn$: Observable<string | null> = of(null);
+export class BookEditComponent implements OnInit {
   book$: Observable<Book | null> = of(null);
 
   constructor(private _route: ActivatedRoute, private _books: BookApiService) {}
@@ -22,5 +22,12 @@ export class BookDetailComponent implements OnInit {
       map((params) => params['isbn']),
       switchMap((isbn) => this._books.findOneByIsbn(isbn))
     );
+  }
+
+  submit(form: NgForm, book: Book): void {
+    const editedBook: Book = {
+      ...book,
+      title: form.value.title,
+    };
   }
 }

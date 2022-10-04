@@ -1,0 +1,33 @@
+<ng-container *ngIf="book$ | async as book">
+  <form (ngSubmit)="submit(form, book)" #form="ngForm">
+    <label for="title">Title:</label>
+    <input
+      type="text"
+      placeholder="title"
+      id="title"
+      name="title"
+      #title="ngModel"
+      required
+      [(ngModel)]="book.title"
+    />
+    <label for="title">Abstract:</label>
+    <input
+      type="text"
+      placeholder="abstract"
+      id="abstract"
+      name="abstract"
+      #abstract="ngModel"
+      required
+      minlength="5"
+      [(ngModel)]="book.abstract"
+    />
+    <p *ngIf="abstract.errors?.['required'] && abstract.dirty">
+      Abstract is required
+    </p>
+    <p *ngIf="abstract.errors?.['minlength'] && abstract.dirty">
+      Required length: {{abstract.errors?.['minlength'].requiredLength}}, but
+      given {{abstract.errors?.['minlength'].actualLength}}
+    </p>
+    <button>Submit</button>
+  </form>
+</ng-container>
